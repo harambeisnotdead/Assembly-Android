@@ -1,10 +1,12 @@
-package org.assembly;
+package org.assembly.views.recycler;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.assembly.R;
 
 public class ProposalViewHolder extends RecyclerView.ViewHolder {
     private TextView title;

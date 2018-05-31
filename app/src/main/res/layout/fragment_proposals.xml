@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="org.assembly.ProposalsFragment">
+    tools:context="org.assembly.views.fragments.ProposalsFragment">
 
     <android.support.design.widget.TabLayout
         android:elevation="4dp"

@@ -1,4 +1,4 @@
-package org.assembly;
+package org.assembly.models;
 
 import android.media.Image;
 

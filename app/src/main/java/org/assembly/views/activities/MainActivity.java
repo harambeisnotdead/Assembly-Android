@@ -1,13 +1,17 @@
-package org.assembly;
+package org.assembly.views.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import org.assembly.R;
+import org.assembly.views.fragments.HomeFragment;
+import org.assembly.views.fragments.ProposalsFragment;
+import org.assembly.views.fragments.ReviewFragment;
+
 
 public class MainActivity extends AppCompatActivity {
-    public APIHandler api;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
         Fragment selected = null;

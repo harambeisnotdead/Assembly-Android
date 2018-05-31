@@ -1,4 +1,4 @@
-package org.assembly;
+package org.assembly.views.fragments;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,6 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.assembly.APIHandler;
+import org.assembly.tasks.PopulateTask;
+import org.assembly.views.recycler.ProposalViewAdapter;
+import org.assembly.R;
 
 public class ProposalsFragment extends Fragment {
     private TabLayout tabs;

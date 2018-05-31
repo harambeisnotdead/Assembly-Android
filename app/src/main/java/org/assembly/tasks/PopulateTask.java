@@ -1,7 +1,12 @@
-package org.assembly;
+package org.assembly.tasks;
 
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+
+import org.assembly.APIHandler;
+import org.assembly.models.Proposal;
+import org.assembly.views.recycler.ProposalViewAdapter;
+import org.assembly.R;
 
 import java.util.ArrayList;
 

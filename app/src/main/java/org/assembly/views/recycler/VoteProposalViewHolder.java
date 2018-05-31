@@ -1,7 +1,9 @@
-package org.assembly;
+package org.assembly.views.recycler;
 
 import android.view.View;
 import android.widget.TextView;
+
+import org.assembly.R;
 
 public class VoteProposalViewHolder extends ProposalViewHolder {
     public TextView upvotes;

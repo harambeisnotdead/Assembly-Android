@@ -1,15 +1,32 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.assembly.ProposalsFragment"
-    android:background="@android:color/holo_green_light">
+    android:orientation="vertical"
+    tools:context="org.assembly.ProposalsFragment">
 
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:elevation="4dp"
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="Proposals"/>
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor">
 
-</FrameLayout>
+        <android.support.design.widget.TabItem
+            android:tag="debating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Debating" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/debating_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voting" />
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

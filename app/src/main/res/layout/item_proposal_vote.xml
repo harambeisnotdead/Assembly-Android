@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center_vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/proposal_image"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity=""
+        android:layout_margin="3dp"
+        android:layout_weight="25"
+        android:src="@drawable/ic_image_black_24dp" />
+
+    <TextView
+        android:id="@+id/proposal_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:layout_weight="50"
+        android:text="Proposal title"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:background="?android:attr/colorBackground"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_margin="3dp"
+        android:layout_weight="12.5"
+        android:src="@drawable/ic_arrow_upward_black_24dp" />
+
+    <ImageButton
+        android:background="?android:attr/colorBackground"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:layout_margin="3dp"
+        android:layout_weight="12.5"
+        android:src="@drawable/ic_arrow_downward_black_24dp" />
+
+</LinearLayout>

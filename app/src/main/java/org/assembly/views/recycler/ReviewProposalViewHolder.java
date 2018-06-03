@@ -10,7 +10,7 @@ public class ReviewProposalViewHolder extends ProposalViewHolder {
 
     public ReviewProposalViewHolder(View itemView, ProposalViewAdapter.OnItemClickListener listener) {
         super(itemView, listener);
-        votes = itemView.findViewById(R.id.proposal_upvotes);
+        votes = itemView.findViewById(R.id.proposal_votes);
     }
 
     @Override

@@ -47,6 +47,7 @@ public class ProposalViewAdapter extends RecyclerView.Adapter<ProposalViewHolder
     public void onBindViewHolder(ProposalViewHolder holder, int position) {
         Proposal p = proposals.get(position);
         holder.setTitle(p.getTitle());
+        holder.setImage(p.getImage());
 
         switch (layoutId) {
             case R.layout.item_proposal_review:

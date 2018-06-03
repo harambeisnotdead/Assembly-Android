@@ -1,12 +1,20 @@
 package org.assembly.views.recycler;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.assembly.R;
+import org.assembly.tasks.LoadImageTask;
+
+import java.io.InputStream;
+import java.net.URL;
 
 public class ProposalViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
@@ -27,8 +35,8 @@ public class ProposalViewHolder extends RecyclerView.ViewHolder {
         this.title.setText(title);
     }
 
-    public void setImage(Uri image) {
-        this.image.setImageURI(image);
+    public void setImage(String image_url) {
+        new LoadImageTask(image).execute(image_url);
     }
 
     public void setVotes(String votes) throws NoSuchMethodException {

@@ -6,13 +6,13 @@ public class Proposal {
     private int id;
     private String title;
     private String description;
-    private Image image;
+    private String image;
     private String phase;
     private int user;
 
     public Proposal() { }
 
-    public Proposal(int id, String title, String description, Image image, String phase, int user) {
+    public Proposal(int id, String title, String description, String image, String phase, int user) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -48,11 +48,11 @@ public class Proposal {
         return this;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public Proposal setImage(Image image) {
+    public Proposal setImage(String image) {
         this.image = image;
         return this;
     }

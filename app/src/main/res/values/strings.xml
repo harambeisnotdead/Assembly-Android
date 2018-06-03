@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_proposals">Proposals</string>
     <string name="title_review">Review</string>
-    <string name="base_api_url">http://192.168.1.23:8000/api/%1$s/%2$s</string>
+    <string name="base_api_url">http://192.168.1.40:8080/api/%1$s/%2$s</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

@@ -1,56 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:columnCount="3"
-    android:padding="10dp"
-    android:rowCount="2">
+    android:layout_height="wrap_content"
+    android:padding="4dp" >
 
-    <ImageView
-        android:id="@+id/proposal_image"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_column="0"
-        android:layout_columnWeight="25"
-        android:layout_gravity="center_vertical"
-        android:layout_row="0"
-        android:layout_rowSpan="2"
-        android:src="@drawable/ic_image_black_24dp" />
-
-    <TextView
-        android:textColor="@color/primaryTextColor"
-        android:id="@+id/proposal_title"
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="75"
-        android:layout_row="0"
-        android:layout_rowWeight="90"
-        android:autoSizeMaxTextSize="24sp"
-        android:autoSizeTextType="uniform"
-        android:text="Proposal title"
-        android:textAllCaps="true"
-        android:textSize="20sp" />
+        card_view:cardCornerRadius="5dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="2dp"
+        card_view:contentPaddingRight="10dp" >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="1"
-        android:layout_row="1"
-        android:layout_columnWeight="10"
-        android:layout_rowWeight="5"
-        android:src="@drawable/ic_comment_black_24dp" />
+        <FrameLayout
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_edge" />
 
-    <TextView
-        android:textColor="@color/primaryTextColor"
-        android:id="@+id/proposal_comments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="2"
-        android:layout_columnWeight="65"
-        android:layout_row="1"
-        android:layout_rowWeight="5"
-        android:text="12"
-        android:textSize="24sp" />
-</GridLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp">
+
+            <ImageView
+                android:id="@+id/proposal_image"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:scaleType="centerCrop"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_image_black_24dp" />
+
+            <TextView
+                android:id="@+id/proposal_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/proposal_image"
+                android:paddingTop="4dp"
+                android:paddingLeft="4dp"
+                android:text="Proposal title"
+                android:textAllCaps="true"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp"
+                android:layout_alignBottom="@+id/proposal_image"
+                android:layout_toRightOf="@+id/proposal_image">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18sp"
+                    android:src="@drawable/ic_comment_black_24dp" />
+
+                <TextView
+                    android:id="@+id/proposal_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,22 +1,24 @@
 package org.assembly.models;
 
-import android.media.Image;
+import java.io.Serializable;
 
-public class Proposal {
+public class Proposal implements Serializable {
     private int id;
     private String title;
-    private String description;
     private String image;
+    private String close_date;
+    private String description;
     private String phase;
     private int user;
 
-    public Proposal() { }
+    public Proposal() {}
 
-    public Proposal(int id, String title, String description, String image, String phase, int user) {
+    public Proposal(int id, String title, String image, String close_date, String description, String phase, int user) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this.image = image;
+        this.close_date = close_date;
+        this.description = description;
         this.phase = phase;
         this.user = user;
     }
@@ -25,58 +27,60 @@ public class Proposal {
         return id;
     }
 
-    public Proposal setId(int id) {
+    public void setId(int id) {
         this.id = id;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Proposal setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Proposal setDescription(String description) {
-        this.description = description;
-        return this;
     }
 
     public String getImage() {
         return image;
     }
 
-    public Proposal setImage(String image) {
+    public void setImage(String image) {
         this.image = image;
-        return this;
+    }
+
+    public String getClose_date() {
+        return close_date;
+    }
+
+    public void setClose_date(String close_date) {
+        this.close_date = close_date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPhase() {
         return phase;
     }
 
-    public Proposal setPhase(String phase) {
+    public void setPhase(String phase) {
         this.phase = phase;
-        return this;
     }
 
     public int getUser() {
         return user;
     }
 
-    public Proposal setUser(int user) {
+    public void setUser(int user) {
         this.user = user;
-        return this;
     }
 
     @Override
     public String toString() {
-        return String.format("%d - %s - %s - %s - %d\n", id, title, description, phase, user);
+        return String.format("%d - %s - %s - %s - %s - %d\n", id, title, close_date, description, phase, user);
     }
 }

@@ -3,33 +3,32 @@ package org.assembly.tasks;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.ImageView;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 public class LoadImageTask extends AsyncTask<String, Void, Bitmap> {
+    ImageView imageView;
 
-    ImageView bmImage;
-
-    public LoadImageTask(ImageView bmImage) {
-        this.bmImage = bmImage;
+    public LoadImageTask(ImageView imageView) {
+        this.imageView = imageView;
     }
 
-    protected Bitmap doInBackground(String... urls) {
-        String urldisplay = urls[0];
-        Bitmap mIcon11 = null;
+    protected Bitmap doInBackground(String... url) {
+        Bitmap image = null;
         try {
-            InputStream in = new java.net.URL(urldisplay).openStream();
-            mIcon11 = BitmapFactory.decodeStream(in);
-        } catch (Exception e) {
-            Log.e("Error", e.getMessage());
+            InputStream in = new URL(url[0]).openConnection().getInputStream();
+            image = BitmapFactory.decodeStream(in);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return mIcon11;
+        return image;
     }
 
     protected void onPostExecute(Bitmap result) {
-        bmImage.setImageBitmap(result);
+        if (result != null)
+            imageView.setImageBitmap(result);
     }
 }

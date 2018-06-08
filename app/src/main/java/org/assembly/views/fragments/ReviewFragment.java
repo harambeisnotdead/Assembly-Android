@@ -1,7 +1,9 @@
 package org.assembly.views.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,16 +20,27 @@ public class ReviewFragment extends Fragment {
     private RecyclerView.LayoutManager rvManager;
     private ProposalViewAdapter rvAdapter;
     private APIHandler api;
+    private Context context;
+    private SwipeRefreshLayout refreshLayout;
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = () -> {
+        new PopulateTask(rv, rvAdapter, api,
+                R.layout.item_proposal_review, context, refreshLayout).execute();
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_review, container, false);
-        api = new APIHandler(getContext());
+        context = getContext();
+        api = new APIHandler(context);
         rv = view.findViewById(R.id.recycler_view);
-        rvManager = new LinearLayoutManager(getContext());
+        rvManager = new LinearLayoutManager(context);
         rv.setLayoutManager(rvManager);
-        new PopulateTask(rv, rvAdapter, api, R.layout.item_proposal_review).execute();
+        refreshLayout = view.findViewById(R.id.refresh_layout);
+        refreshLayout.setOnRefreshListener(refreshListener);
+        new PopulateTask(rv, rvAdapter, api,
+                R.layout.item_proposal_review, context, null).execute();
         return view;
     }
 }

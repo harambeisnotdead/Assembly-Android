@@ -6,69 +6,57 @@
     android:layout_height="match_parent"
     tools:context="org.assembly.views.activities.MainActivity">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/top_bar"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="4dp"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/action_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryColor"
+        android:elevation="4dp">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="82dp"
+            android:layout_height="35dp"
+            android:src="@drawable/logo" />
 
+        <android.support.v7.widget.ButtonBarLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
 
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/primaryColor"
-                android:elevation="4dp">
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryColor"
+                android:src="@drawable/ic_person_black_24dp" />
 
-                <ImageView
-                    android:layout_width="82dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/logo" />
-
-                <android.support.v7.widget.ButtonBarLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end">
-
-                    <android.support.v7.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primaryColor"
-                        android:src="@drawable/ic_person_black_24dp" />
-
-                    <android.support.v7.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primaryColor"
-                        android:src="@drawable/ic_add_black_24dp" />
-                </android.support.v7.widget.ButtonBarLayout>
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
-    </android.support.design.widget.CoordinatorLayout>
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryColor"
+                android:src="@drawable/ic_add_black_24dp" />
+        </android.support.v7.widget.ButtonBarLayout>
+    </android.support.v7.widget.Toolbar>
 
     <FrameLayout
+        android:elevation="4dp"
         android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/navigation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+        app:layout_constraintTop_toBottomOf="@id/action_bar" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
-        app:itemIconTint="@drawable/bottom_navigation_colors"
-        app:itemTextColor="@drawable/bottom_navigation_colors"
+        app:itemIconTint="@drawable/bottom_nav"
+        app:itemTextColor="@drawable/bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
-
 </android.support.constraint.ConstraintLayout>

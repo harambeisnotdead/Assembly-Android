@@ -13,9 +13,9 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.AppBarLayout
+            android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
@@ -23,28 +23,12 @@
                 android:background="@color/primaryColor"
                 android:elevation="4dp">
 
-                <ImageView
-                    android:layout_width="82dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/logo" />
-
-                <android.support.v7.widget.ButtonBarLayout
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end">
-
-                    <android.support.v7.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primaryColor"
-                        android:src="@drawable/ic_person_black_24dp" />
-
-                    <android.support.v7.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/primaryColor"
-                        android:src="@drawable/ic_add_black_24dp" />
-                </android.support.v7.widget.ButtonBarLayout>
+                    android:backgroundTint="@color/primaryColor"
+                    android:src="@drawable/ic_arrow_back_black_24dp" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
     </android.support.design.widget.CoordinatorLayout>
@@ -73,6 +57,7 @@
             app:srcCompat="@drawable/ic_image_black_24dp" />
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="18dp"
@@ -80,17 +65,17 @@
             android:gravity="center">
             <ImageButton
                 android:id="@+id/proposal_upvote"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
                 android:background="?android:attr/colorBackground"
                 android:src="@drawable/ic_arrow_upward_black_24dp" />
 
             <ImageButton
                 android:id="@+id/proposal_downvote"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
                 android:background="?android:attr/colorBackground"
                 android:src="@drawable/ic_arrow_downward_black_24dp" />
         </LinearLayout>
@@ -100,7 +85,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textAlignment="center"
             android:textSize="16sp"
             android:textColor="@color/primaryTextColor"
             android:text="LOREM IMPSUM LOREM IMPSUM LOREM IMPSUM LOREM IMPSUM LOREM IMPSUM LOREM IMPSUM" />
@@ -111,13 +95,16 @@
             android:padding="8dp"
             android:background="@color/primaryDarkColor"
             android:gravity="center_vertical|right">
+
             <TextView
+                android:id="@+id/proposal_close_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:textColor="@color/primaryTextColor"
-                android:text="Created on 00/00/000"/>
+                android:text="Closes on 0000/00/00"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="16sp"
@@ -128,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="8dp"
-                android:text="12"
+                android:text="0"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="16sp" />
 
@@ -141,7 +128,7 @@
                 android:id="@+id/proposal_votes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
+                android:text="0"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="16sp" />
         </LinearLayout>

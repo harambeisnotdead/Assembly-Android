@@ -13,9 +13,6 @@ import android.widget.TextView;
 import org.assembly.R;
 import org.assembly.tasks.LoadImageTask;
 
-import java.io.InputStream;
-import java.net.URL;
-
 public class ProposalViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
     private ImageView image;
@@ -44,10 +41,6 @@ public class ProposalViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setComments(String comments) throws NoSuchMethodException {
-        throw new NoSuchMethodException("Method not overriden");
-    }
-
-    public void setUpvotes(String upvotes) throws NoSuchMethodException {
         throw new NoSuchMethodException("Method not overriden");
     }
 }

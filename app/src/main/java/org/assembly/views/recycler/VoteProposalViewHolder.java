@@ -6,16 +6,16 @@ import android.widget.TextView;
 import org.assembly.R;
 
 public class VoteProposalViewHolder extends ProposalViewHolder {
-    public TextView upvotes;
+    public TextView votes;
 
     public VoteProposalViewHolder(View itemView, ProposalViewAdapter.OnItemClickListener listener) {
         super(itemView, listener);
-        upvotes = itemView.findViewById(R.id.proposal_votes);
+        votes = itemView.findViewById(R.id.proposal_votes);
     }
 
     @Override
-    public void setUpvotes(String upvotes) {
-        this.upvotes.setText(upvotes);
+    public void setVotes(String votes) {
+        this.votes.setText(votes);
     }
 }
 

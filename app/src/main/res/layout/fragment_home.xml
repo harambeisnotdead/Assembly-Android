@@ -1,15 +1,245 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.assembly.views.fragments.HomeFragment"
-    android:background="@android:color/holo_blue_light">
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context="org.assembly.views.fragments.HomeFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:textSize="30sp"
-        android:text="Home"/>
+        android:text="The new society's democracy tool"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/votingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Currently in voting phase"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingRight="10dp">
+
+        <FrameLayout
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_edge" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp">
+
+            <ImageView
+                android:id="@+id/proposal_voting_image"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_image_black_24dp" />
+
+            <TextView
+                android:id="@+id/proposal_voting_title"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/proposal_voting_image"
+                android:paddingLeft="4dp"
+                android:paddingTop="4dp"
+                android:text="Proposal title"
+                android:textAllCaps="true"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/proposal_voting_close"
+                android:layout_width="91dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right|center_vertical"
+                android:text="Close Date" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/proposal_voting_image"
+                android:layout_toRightOf="@+id/proposal_voting_image"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18sp"
+                    android:src="@drawable/ic_comment_black_24dp" />
+
+                <TextView
+                    android:id="@+id/proposal_voting_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="12"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18sp"
+                    android:src="@drawable/ic_voting_urn" />
+
+                <TextView
+                    android:id="@+id/proposal_voting_votes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/proposal_voting_close" >
+
+                <ImageButton
+                    android:id="@+id/upVoteButton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_margin="3dp"
+                    android:background="?android:attr/colorBackground"
+                    android:src="@drawable/ic_arrow_upward_black_24dp" />
+
+                <ImageButton
+                    android:id="@+id/downVoteButton"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_margin="3dp"
+                    android:background="?android:attr/colorBackground"
+                    android:src="@drawable/ic_arrow_downward_black_24dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/debateTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Currently in debate phase"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20sp" />
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="2dp"
+        card_view:contentPaddingRight="10dp" >
+
+        <FrameLayout
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_edge" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp">
+
+            <ImageView
+                android:id="@+id/proposal_debate_image"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:scaleType="centerCrop"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_image_black_24dp" />
+
+            <TextView
+                android:id="@+id/proposal_debate_title"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/proposal_debate_image"
+                android:paddingLeft="4dp"
+                android:paddingTop="4dp"
+                android:text="Proposal title"
+                android:textAllCaps="true"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/proposal_debate_close"
+                android:layout_width="91dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right|center_vertical"
+                android:text="Close Date" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/proposal_debate_image"
+                android:layout_toRightOf="@+id/proposal_debate_image"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
+                android:paddingLeft="4dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18sp"
+                    android:src="@drawable/ic_comment_black_24dp" />
+
+                <TextView
+                    android:id="@+id/proposal_debate_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/disclaimer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="bottom"
+        android:text="Developed by Saul Adserias and Sergi Masip" />
 
 </LinearLayout>

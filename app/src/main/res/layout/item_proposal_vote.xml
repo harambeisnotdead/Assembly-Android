@@ -33,7 +33,7 @@
 
             <TextView
                 android:id="@+id/proposal_title"
-                android:layout_width="198dp"
+                android:layout_width="187dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/proposal_image"
@@ -43,6 +43,15 @@
                 android:textAllCaps="true"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/proposal_close"
+                android:layout_width="91dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right|center_vertical"
+                android:text="Close Date" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -85,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true">
+                android:layout_below="@+id/proposal_close">
 
                 <ImageButton
                     android:layout_width="wrap_content"

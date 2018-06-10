@@ -56,6 +56,22 @@ public class APIHandler {
         return proposals;
     }
 
+    public Proposal getLastProposal(String endpoint) {
+        Proposal proposal = null;
+        try {
+            URL url = new URL(String.format(BASE_API_URL, Endpoints.PROPOSALS, endpoint));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK)
+                proposal = ((List<Proposal>) parseResponse(connection.getInputStream(),
+                        new TypeToken<List<Proposal>>(){}.getType())).get(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return proposal;
+    }
+
     public ArrayList<Vote> getVotes(String endpoint) {
         //TODO
         ArrayList<Vote> votes = new ArrayList<>();
@@ -115,6 +131,7 @@ public class APIHandler {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             return new Gson().fromJson(br.readLine(), type);
         }
+
     }
 
     public static class Endpoints {

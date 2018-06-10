@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="5dp"
-        card_view:cardUseCompatPadding="true"
         card_view:cardElevation="2dp"
-        card_view:contentPaddingRight="10dp" >
+        card_view:cardUseCompatPadding="true"
+        card_view:contentPaddingRight="10dp">
 
         <FrameLayout
             android:layout_width="4dp"
@@ -26,32 +26,41 @@
                 android:id="@+id/proposal_image"
                 android:layout_width="84dp"
                 android:layout_height="84dp"
-                android:scaleType="centerCrop"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_image_black_24dp" />
 
             <TextView
                 android:id="@+id/proposal_title"
-                android:layout_width="wrap_content"
+                android:layout_width="183dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/proposal_image"
-                android:paddingTop="4dp"
                 android:paddingLeft="4dp"
+                android:paddingTop="4dp"
                 android:text="Proposal title"
                 android:textAllCaps="true"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/proposal_close"
+                android:layout_width="91dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right|center_vertical"
+                android:text="Close Date" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/proposal_image"
+                android:layout_toRightOf="@+id/proposal_image"
                 android:gravity="center_vertical"
                 android:paddingBottom="4dp"
-                android:paddingLeft="4dp"
-                android:layout_alignBottom="@+id/proposal_image"
-                android:layout_toRightOf="@+id/proposal_image">
+                android:paddingLeft="4dp">
 
                 <ImageView
                     android:layout_width="wrap_content"

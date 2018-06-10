@@ -5,28 +5,24 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.Tab;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.assembly.APIHandler;
+import org.assembly.R;
+import org.assembly.api.APIClient;
 import org.assembly.tasks.PopulateTask;
 import org.assembly.views.recycler.ProposalViewAdapter;
-import org.assembly.R;
 
 public class ProposalsFragment extends Fragment {
     private TabLayout tabs;
     private RecyclerView rv;
     private RecyclerView.LayoutManager rvManager;
     private ProposalViewAdapter rvAdapter;
-    private APIHandler api;
+    private APIClient api;
     private Context context;
     private SwipeRefreshLayout refreshLayout;
 
@@ -73,7 +69,7 @@ public class ProposalsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_proposals, container, false);
         context = getContext();
         tabs = view.findViewById(R.id.tabs);
-        api = new APIHandler(context);
+        api = new APIClient(context);
         rv = view.findViewById(R.id.recycler_view);
         rvManager = new LinearLayoutManager(context);
         rv.setLayoutManager(rvManager);

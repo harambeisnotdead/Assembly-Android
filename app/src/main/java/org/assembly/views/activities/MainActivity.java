@@ -1,9 +1,11 @@
 package org.assembly.views.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,11 +19,12 @@ import org.assembly.views.fragments.ReviewFragment;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton profile;
+    private ImageButton bttnProfile;
+    private FloatingActionButton fabNewProposal;
     private Toolbar actionBar;
+    private BottomNavigationView navigation;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = item -> {
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationListener = item -> {
         Fragment selected = null;
 
         switch (item.getItemId()) {
@@ -55,8 +58,13 @@ public class MainActivity extends AppCompatActivity {
         actionBar = findViewById(R.id.action_bar);
         setSupportActionBar(actionBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(navigationListener);
+        bttnProfile = findViewById(R.id.bttn_profile);
+        fabNewProposal = findViewById(R.id.fab_new_proposal);
+        fabNewProposal.setOnClickListener(
+                v -> startActivity(new Intent(this, NewProposalActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY)));
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, new HomeFragment())
                 .commit();

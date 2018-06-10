@@ -1,14 +1,15 @@
 package org.assembly.views.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import org.assembly.R;
 import org.assembly.tasks.RegisterTask;
+import org.assembly.utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,31 +17,21 @@ import java.util.Arrays;
 public class RegisterActivity extends AppCompatActivity {
     private Button bttnRegister;
     private Button bttnLogin;
-    private TextView username;
-    private TextView nationalId;
-    private TextView email;
-    private TextView password;
+    private EditText username;
+    private EditText nationalId;
+    private EditText email;
+    private EditText password;
 
     private View.OnClickListener registerListener = v -> {
-        boolean requiredFields = true;
-        ArrayList<TextView> fields = new ArrayList<>(
-                Arrays.asList(new TextView[]{username, nationalId, email, password}));
+        ArrayList<EditText> fields = new ArrayList<>(
+                Arrays.asList(new EditText[]{username, nationalId, email, password}));
 
-        for (TextView f : fields) {
-            if (f.getText().toString().trim().isEmpty()) {
-                f.setError(f.getHint() + " is required");
-                requiredFields = false;
-            }
-        }
-
-        if (!requiredFields)
-            return;
-
-        new RegisterTask(this,
-                         username.getText().toString(),
-                         nationalId.getText().toString(),
-                         password.getText().toString(),
-                         email.getText().toString()).execute();
+        if (InputUtils.checkRequiredFields(fields))
+            new RegisterTask(this,
+                             username.getText().toString(),
+                             nationalId.getText().toString(),
+                             password.getText().toString(),
+                             email.getText().toString()).execute();
     };
 
     @Override
@@ -56,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         bttnRegister.setOnClickListener(registerListener);
         bttnLogin.setOnClickListener(v -> {
             startActivity(new Intent(getBaseContext(), LoginActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         });
     }
 }

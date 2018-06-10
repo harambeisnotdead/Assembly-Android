@@ -23,4 +23,10 @@
     <string name="toast_login_error">Error, couldn\'t sign in</string>
     <string name="toast_register_error">Error, couldn\'t sign up</string>
 
+    <!-- New proposal strings -->
+    <string name="hint_title">Title</string>
+    <string name="hint_description">Description</string>
+    <string name="bttn_create">Create New Proposal</string>
+    <string name="toast_create_error">Error, couldn\'t create proposal</string>
+    <string name="toast_create_success">Proposal created</string>
 </resources>

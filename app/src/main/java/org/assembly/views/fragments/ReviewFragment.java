@@ -10,16 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.assembly.APIHandler;
+import org.assembly.R;
+import org.assembly.api.APIClient;
 import org.assembly.tasks.PopulateTask;
 import org.assembly.views.recycler.ProposalViewAdapter;
-import org.assembly.R;
 
 public class ReviewFragment extends Fragment {
     private RecyclerView rv;
     private RecyclerView.LayoutManager rvManager;
     private ProposalViewAdapter rvAdapter;
-    private APIHandler api;
+    private APIClient api;
     private Context context;
     private SwipeRefreshLayout refreshLayout;
 
@@ -33,7 +33,7 @@ public class ReviewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_review, container, false);
         context = getContext();
-        api = new APIHandler(context);
+        api = new APIClient(context);
         rv = view.findViewById(R.id.recycler_view);
         rvManager = new LinearLayoutManager(context);
         rv.setLayoutManager(rvManager);

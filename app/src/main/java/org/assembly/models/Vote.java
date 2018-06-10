@@ -1,7 +1,5 @@
 package org.assembly.models;
 
-import android.support.v7.app.AppCompatActivity;
-
 public class Vote {
     private int proposal;
     private int phase;

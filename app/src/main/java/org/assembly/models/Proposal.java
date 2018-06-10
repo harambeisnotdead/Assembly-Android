@@ -14,7 +14,8 @@ public class Proposal implements Serializable {
 
     private int user;
 
-    public Proposal() {}
+    public Proposal() {
+    }
 
     public Proposal(int id, String title, String image, String close_date, String description,
                     String phase, int comment_count, int vote_votes_count, int user) {
@@ -85,17 +86,19 @@ public class Proposal implements Serializable {
         this.user = user;
     }
 
-    public int getComment_count() { return comment_count; }
+    public int getComment_count() {
+        return comment_count;
+    }
 
-    public void setComment_count(int comment_count) { this.comment_count = comment_count; }
+    public void setComment_count(int comment_count) {
+        this.comment_count = comment_count;
+    }
 
-    public int getVote_votes_count() { return vote_votes_count; }
+    public int getVote_votes_count() {
+        return vote_votes_count;
+    }
 
-    public void setVote_votes_count(int vote_votes_count) { this.vote_votes_count = vote_votes_count; }
-
-    @Override
-    public String toString() {
-        return String.format("%d - %s - %s - %s - %s - %d - %d - %d\n", id, title, close_date, description,
-                phase, comment_count, vote_votes_count, user);
+    public void setVote_votes_count(int vote_votes_count) {
+        this.vote_votes_count = vote_votes_count;
     }
 }

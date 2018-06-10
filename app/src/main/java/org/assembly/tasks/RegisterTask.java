@@ -1,13 +1,11 @@
 package org.assembly.tasks;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import org.assembly.APIHandler;
 import org.assembly.R;
-import org.assembly.views.activities.MainActivity;
+import org.assembly.api.APIClient;
 
 public class RegisterTask extends AsyncTask<Void, Void, Boolean> {
     private Context context;
@@ -15,7 +13,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Boolean> {
     private String nationalId;
     private String password;
     private String email;
-    private APIHandler api;
+    private APIClient api;
 
     public RegisterTask(Context context, String username, String nationalId,
                         String password, String email) {
@@ -24,7 +22,7 @@ public class RegisterTask extends AsyncTask<Void, Void, Boolean> {
         this.nationalId = nationalId;
         this.password = password;
         this.email = email;
-        api = new APIHandler(context);
+        api = new APIClient(context);
     }
 
     @Override

@@ -11,11 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import org.assembly.R;
+import org.assembly.models.Proposal;
+import org.assembly.models.Vote;
+import org.assembly.utils.SharedKeys;
 import org.assembly.views.fragments.HomeFragment;
 import org.assembly.views.fragments.ProposalsFragment;
 import org.assembly.views.fragments.ReviewFragment;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fabNewProposal;
     private Toolbar actionBar;
     private BottomNavigationView navigation;
+    private TextView citizenUsername;
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationListener = item -> {
         Fragment selected = null;
@@ -53,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        Log.d("MAIN", sp.getString("token", ""));
+        citizenUsername = findViewById(R.id.citizen_username);
+        citizenUsername.setText(String.format(
+                sp.getString(SharedKeys.CITIZEN_USERNAME, "citizen")));
 
         actionBar = findViewById(R.id.action_bar);
         setSupportActionBar(actionBar);
@@ -61,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(navigationListener);
         bttnProfile = findViewById(R.id.bttn_profile);
+        bttnProfile.setOnClickListener(v -> startActivity(new Intent(this, CitizenActivity.class)));
         fabNewProposal = findViewById(R.id.fab_new_proposal);
         fabNewProposal.setOnClickListener(
                 v -> startActivity(new Intent(this, NewProposalActivity.class)

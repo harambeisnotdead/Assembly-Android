@@ -48,15 +48,9 @@ public class ProposalViewAdapter extends RecyclerView.Adapter<ProposalViewHolder
         Proposal p = proposals.get(position);
         holder.setTitle(p.getTitle());
         holder.setImage(p.getImage());
-
-        switch (layoutId) {
-            case R.layout.item_proposal_review:
-                break;
-            case R.layout.item_proposal_debate:
-                break;
-            case R.layout.item_proposal_vote:
-                break;
-        }
+        holder.setCloseDate(p.getClose_date());
+        holder.setComments(String.valueOf(p.getComment_count()));
+        holder.setVotes(String.valueOf(p.getVote_votes_count()));
     }
 
     @Override

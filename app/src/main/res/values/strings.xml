@@ -1,4 +1,5 @@
 <resources>
+    <!-- App strings -->
     <string name="app_name">Assembly</string>
     <string name="title_home">Home</string>
     <string name="title_proposals">Proposals</string>
@@ -29,4 +30,16 @@
     <string name="bttn_create">Create New Proposal</string>
     <string name="toast_create_error">Error, couldn\'t create proposal</string>
     <string name="toast_create_success">Proposal created</string>
+
+    <!-- Home strings -->
+    <string name="banner">The new society\'s democracy tool</string>
+    <string name="welcome_message">Welcome,\ </string>
+
+    <!-- Citzen strings -->
+    <string name="bttn_logout">Log out</string>
+    <string name="username">\@</string>
+    <string name="first_name">First Name:\ </string>
+    <string name="last_name">Last Name:\ </string>
+    <string name="national_id">National ID:\ </string>
+    <string name="personal_info">Personal information</string>
 </resources>

@@ -11,11 +11,9 @@ public class Proposal implements Serializable {
     private String phase;
     private int comment_count;
     private int vote_votes_count;
-
     private int user;
 
-    public Proposal() {
-    }
+    public Proposal() {}
 
     public Proposal(int id, String title, String image, String close_date, String description,
                     String phase, int comment_count, int vote_votes_count, int user) {

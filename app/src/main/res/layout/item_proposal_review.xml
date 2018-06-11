@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="5dp"
-        card_view:cardUseCompatPadding="true"
         card_view:cardElevation="2dp"
-        card_view:contentPaddingRight="10dp" >
+        card_view:cardUseCompatPadding="true"
+        card_view:contentPaddingRight="10dp">
 
         <FrameLayout
             android:layout_width="4dp"
@@ -26,14 +26,14 @@
                 android:id="@+id/proposal_image"
                 android:layout_width="84dp"
                 android:layout_height="84dp"
-                android:scaleType="centerCrop"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_image_black_24dp" />
 
             <TextView
                 android:id="@+id/proposal_title"
-                android:layout_width="198dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/proposal_image"
@@ -45,22 +45,30 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:visibility="gone"
-                android:id="@+id/proposal_votes"
-                android:layout_alignStart="@id/bttn_upvote"
-                android:layout_centerVertical="true"
-                android:textSize="25sp"
-                android:text="0"
+                android:id="@+id/proposal_close"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:text="Close Date" />
+
+            <TextView
+                android:id="@+id/proposal_votes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/bttn_upvote"
+                android:layout_centerVertical="true"
+                android:gravity="right"
+                android:text="0"
+                android:textSize="20sp" />
 
             <ImageButton
                 android:id="@+id/bttn_upvote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_margin="3dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/arrow_up" />
 

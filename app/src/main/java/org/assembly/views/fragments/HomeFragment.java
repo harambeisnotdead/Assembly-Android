@@ -9,17 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.assembly.R;
-import org.assembly.models.Proposal;
 import org.assembly.tasks.RetrieveProposalTask;
 import org.assembly.utils.Endpoints;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class HomeFragment extends Fragment {
-    private List<Proposal> proposals;
-
     private ImageView voting_image;
     private ImageView debating_image;
 
@@ -30,8 +24,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        proposals = new ArrayList<>();
 
         voting_image = view.findViewById(R.id.proposal_voting_image);
         voting_title = view.findViewById(R.id.proposal_voting_title);

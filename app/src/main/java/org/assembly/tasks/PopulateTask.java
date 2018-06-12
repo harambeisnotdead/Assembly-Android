@@ -24,11 +24,11 @@ public class PopulateTask extends AsyncTask<Void, Void, ArrayList<Proposal>> {
     private Context context;
     private SwipeRefreshLayout refreshLayout;
 
-    public PopulateTask(RecyclerView rv, ProposalViewAdapter rvAdapter, APIClient api,
-                        int layoutId, Context context, SwipeRefreshLayout refreshLayout) {
+    public PopulateTask(RecyclerView rv, ProposalViewAdapter rvAdapter, int layoutId,
+                        Context context, SwipeRefreshLayout refreshLayout) {
         this.rv = rv;
         this.rvAdapter = rvAdapter;
-        this.api = api;
+        this.api = new APIClient(context);
         this.layoutId = layoutId;
         this.context = context;
         this.refreshLayout = refreshLayout;

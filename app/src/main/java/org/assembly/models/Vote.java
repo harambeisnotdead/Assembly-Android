@@ -3,14 +3,14 @@ package org.assembly.models;
 public class Vote {
     private int proposal;
     private int phase;
-    private int vote;
+    private int user;
 
     public Vote() {}
 
-    public Vote(int proposal, int phase, int vote) {
+    public Vote(int proposal, int phase, int user) {
         this.proposal = proposal;
         this.phase = phase;
-        this.vote = vote;
+        this.user = user;
     }
 
     public int getProposal() {
@@ -29,11 +29,11 @@ public class Vote {
         this.phase = phase;
     }
 
-    public int getVote() {
-        return vote;
+    public int getUser() {
+        return user;
     }
 
-    public void setVote(int vote) {
-        this.vote = vote;
+    public void setUser(int user) {
+        this.user = user;
     }
 }

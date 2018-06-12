@@ -4,7 +4,7 @@
     <string name="title_home">Home</string>
     <string name="title_proposals">Proposals</string>
     <string name="title_review">Review</string>
-    <string name="base_api_url">http://192.168.1.23:8000/api/%1$s/%2$s</string>
+    <string name="base_api_url">http://192.168.1.23:8000/api</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Login/Register strings -->
@@ -42,4 +42,9 @@
     <string name="last_name">Last Name:\ </string>
     <string name="national_id">National ID:\ </string>
     <string name="personal_info">Personal information</string>
+
+    <!-- Vote strings -->
+    <string name="toast_vote_success">Vote registered succesfully</string>
+    <string name="toast_vote_error">Error, couldn\'t register the vote</string>
+
 </resources>

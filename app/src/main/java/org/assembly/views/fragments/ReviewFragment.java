@@ -1,19 +1,26 @@
 package org.assembly.views.fragments;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.assembly.R;
 import org.assembly.api.APIClient;
+import org.assembly.models.Proposal;
 import org.assembly.tasks.PopulateTask;
+import org.assembly.views.activities.MainActivity;
 import org.assembly.views.recycler.ProposalViewAdapter;
+
+import java.util.ArrayList;
 
 public class ReviewFragment extends Fragment {
     private RecyclerView rv;
@@ -22,10 +29,11 @@ public class ReviewFragment extends Fragment {
     private APIClient api;
     private Context context;
     private SwipeRefreshLayout refreshLayout;
+    private ArrayList<Proposal> proposals;
 
     private SwipeRefreshLayout.OnRefreshListener refreshListener = () -> {
-        new PopulateTask(rv, rvAdapter, api,
-                R.layout.item_proposal_review, context, refreshLayout).execute();
+        new PopulateTask(rv, rvAdapter, api, R.layout.item_proposal_review,
+                         context, refreshLayout).execute();
     };
 
     @Override

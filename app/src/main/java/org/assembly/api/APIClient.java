@@ -23,6 +23,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +32,8 @@ import java.util.Map;
 public class APIClient {
     private String BASE_API_URL;
     private Context context;
+
+    public APIClient() {}
 
     public APIClient(Context context) {
         this.context = context;
@@ -41,7 +44,7 @@ public class APIClient {
     public ArrayList<Proposal> getProposals(String endpoint) {
         ArrayList<Proposal> proposals = new ArrayList<>();
         try {
-            URL url = new URL(String.format(BASE_API_URL, Endpoints.PROPOSALS, endpoint));
+            URL url = new URL(String.format("%s/%s/%s", BASE_API_URL, Endpoints.PROPOSALS, endpoint));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -61,7 +64,7 @@ public class APIClient {
     public boolean createProposal(String title, String description) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         try {
-            URL url = new URL(String.format(BASE_API_URL, Endpoints.PROPOSALS,
+            URL url = new URL(String.format("%s/%s/%s", BASE_API_URL, Endpoints.PROPOSALS,
                     Endpoints.Proposals.CREATE));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
@@ -81,22 +84,92 @@ public class APIClient {
         return false;
     }
 
-    public ArrayList<Vote> getVotes(String endpoint) {
+    public ArrayList<Vote> getVotesInPhase(String phase) {
         ArrayList<Vote> votes = new ArrayList<>();
+        try {
+            URL url = new URL(String.format("%s/%s/%s/%s", BASE_API_URL, Endpoints.PROPOSALS,
+                    Endpoints.Proposals.USER_VOTES, phase));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization",
+                    "Token " + PreferenceManager.getDefaultSharedPreferences(context)
+                            .getString(SharedKeys.TOKEN, ""));
+            connection.connect();
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK)
+                votes.addAll(parseResponse(connection.getInputStream(),
+                        new TypeToken<List<Vote>>(){}.getType()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return votes;
     }
 
+    public boolean reviewVote(int user, int proposal) {
+        try {
+            URL url = new URL(String.format("%s/%s/%s/%s", BASE_API_URL, Endpoints.PROPOSALS,
+                              Endpoints.Proposals.REVIEW, Endpoints.Proposals.VOTE));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Authorization",
+                    "Token " + PreferenceManager.getDefaultSharedPreferences(context)
+                            .getString(SharedKeys.TOKEN, ""));
+            OutputStream os = connection.getOutputStream();
+            os.write(String.format("user=%s"
+                                    + "&phase=%s"
+                                    + "&proposal=%s",
+                                    user, Endpoints.Proposals.REVIEW, proposal).getBytes());
+            connection.connect();
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_CREATED)
+                return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean votingVote(boolean option, int proposal) {
+        try {
+            SecureRandom sr = new SecureRandom();
+            byte[] password = new byte[32];
+            sr.nextBytes(password);
+            String user_pw = android.util.Base64.encodeToString(password,
+                    android.util.Base64.URL_SAFE);
+
+            URL url = new URL(String.format("%s/%s/%s/%s", BASE_API_URL, Endpoints.PROPOSALS,
+                    Endpoints.Proposals.VOTE, Endpoints.Proposals.VOTE));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Authorization",
+                    "Token " + PreferenceManager.getDefaultSharedPreferences(context)
+                            .getString(SharedKeys.TOKEN, ""));
+            OutputStream os = connection.getOutputStream();
+            os.write(String.format("user_pw=%s"
+                                    + "&phase=%s"
+                                    + "&option=%s"
+                                    + "&proposal=%s",
+                                    user_pw, Endpoints.Proposals.VOTE, option,
+                                    proposal).getBytes());
+            connection.connect();
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_CREATED)
+                return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     public boolean register(String username, String nationalId, String password, String email) {
         try {
-            URL url = new URL(String.format(BASE_API_URL, Endpoints.CITIZENS,
+            URL url = new URL(String.format("%s/%s/%s", BASE_API_URL, Endpoints.CITIZENS,
                     Endpoints.Citizens.CREATE));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             OutputStream os = connection.getOutputStream();
             os.write(String.format("user.username=%s"
-                            + "&national_id=%s"
-                            + "&user.password=%s"
-                            + "&user.email=%s",
+                                    + "&national_id=%s"
+                                    + "&user.password=%s"
+                                    + "&user.email=%s",
                     username, nationalId, password, email).getBytes());
             connection.connect();
             if (connection.getResponseCode() == HttpURLConnection.HTTP_CREATED)
@@ -114,7 +187,7 @@ public class APIClient {
             return true;
 
         try {
-            URL url = new URL(String.format(BASE_API_URL, Endpoints.CITIZENS,
+            URL url = new URL(String.format("%s/%s/%s", BASE_API_URL, Endpoints.CITIZENS,
                     Endpoints.Citizens.LOGIN));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
@@ -139,7 +212,8 @@ public class APIClient {
         Citizen citizen = null;
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         try {
-            URL url = new URL(String.format(BASE_API_URL, Endpoints.CITIZENS, username));
+            URL url = new URL(String.format("%s/%s/%s", BASE_API_URL,
+                    Endpoints.CITIZENS, username));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Authorization",
@@ -164,11 +238,9 @@ public class APIClient {
         editor.apply();
     }
 
-    private <T> T parseResponse(InputStream is, Type type) throws IOException {
+    public <T> T parseResponse(InputStream is, Type type) throws IOException {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             return new Gson().fromJson(br.readLine(), type);
         }
-
     }
-
 }

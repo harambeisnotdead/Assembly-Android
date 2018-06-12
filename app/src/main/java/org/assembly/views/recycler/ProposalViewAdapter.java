@@ -34,11 +34,11 @@ public class ProposalViewAdapter extends RecyclerView.Adapter<ProposalViewHolder
 
         switch (layoutId) {
             case R.layout.item_proposal_review:
-                return new ReviewProposalViewHolder(view, listener);
+                return new ReviewProposalViewHolder(view, listener, proposals);
             case R.layout.item_proposal_debate:
                 return new DebateProposalViewHolder(view, listener);
             case R.layout.item_proposal_vote:
-                return new VoteProposalViewHolder(view, listener);
+                return new VoteProposalViewHolder(view, listener, proposals);
         }
         return null;
     }
@@ -50,7 +50,15 @@ public class ProposalViewAdapter extends RecyclerView.Adapter<ProposalViewHolder
         holder.setImage(p.getImage());
         holder.setCloseDate(p.getClose_date());
         holder.setComments(String.valueOf(p.getComment_count()));
-        holder.setVotes(String.valueOf(p.getVote_votes_count()));
+
+        switch (layoutId) {
+            case R.layout.item_proposal_review:
+                holder.setVotes(String.valueOf(p.getReview_votes_count()));
+                break;
+            case R.layout.item_proposal_vote:
+                holder.setVotes(String.valueOf(p.getVote_votes_count()));
+                break;
+        }
     }
 
     @Override

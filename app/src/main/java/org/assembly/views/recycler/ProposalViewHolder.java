@@ -37,10 +37,8 @@ public class ProposalViewHolder extends RecyclerView.ViewHolder {
         this.closeDate.setText(date);
     }
 
-    public void setVotes(String votes) {
-    }
+    public void setVotes(String votes) { }
 
-    public void setComments(String comments) {
-    }
+    public void setComments(String comments) { }
 }
 

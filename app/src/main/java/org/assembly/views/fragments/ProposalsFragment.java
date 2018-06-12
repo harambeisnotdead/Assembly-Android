@@ -37,11 +37,11 @@ public class ProposalsFragment extends Fragment {
             switch (tab.getPosition()) {
                 case TabOptions.DEBATING:
                     new PopulateTask(rv, rvAdapter, api,
-                            R.layout.item_proposal_debate, context, null).execute();
+                                     R.layout.item_proposal_debate, context, null).execute();
                     break;
                 case TabOptions.VOTING:
                     new PopulateTask(rv, rvAdapter, api,
-                            R.layout.item_proposal_vote, context, null) .execute();
+                                     R.layout.item_proposal_vote, context, null) .execute();
                     break;
             }
         }
@@ -56,10 +56,10 @@ public class ProposalsFragment extends Fragment {
     private SwipeRefreshLayout.OnRefreshListener refreshListener = () -> {
         if (tabs.getSelectedTabPosition() == TabOptions.DEBATING)
             new PopulateTask(rv, rvAdapter, api,
-                    R.layout.item_proposal_debate, context, refreshLayout).execute();
+                             R.layout.item_proposal_debate, context, refreshLayout).execute();
         else
             new PopulateTask(rv, rvAdapter, api,
-                    R.layout.item_proposal_vote, context, refreshLayout).execute();
+                             R.layout.item_proposal_vote, context, refreshLayout).execute();
     };
 
 
@@ -76,7 +76,8 @@ public class ProposalsFragment extends Fragment {
         tabs.addOnTabSelectedListener(tabListener);
         refreshLayout = view.findViewById(R.id.refresh_layout);
         refreshLayout.setOnRefreshListener(refreshListener);
-        new PopulateTask(rv, rvAdapter, api, R.layout.item_proposal_debate, context, null).execute();
+        new PopulateTask(rv, rvAdapter, api, R.layout.item_proposal_debate,
+                         context, null).execute();
         return view;
     }
 }

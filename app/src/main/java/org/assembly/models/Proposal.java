@@ -11,22 +11,10 @@ public class Proposal implements Serializable {
     private String phase;
     private int comment_count;
     private int vote_votes_count;
+    private int review_votes_count;
     private int user;
 
     public Proposal() {}
-
-    public Proposal(int id, String title, String image, String close_date, String description,
-                    String phase, int comment_count, int vote_votes_count, int user) {
-        this.id = id;
-        this.title = title;
-        this.image = image;
-        this.close_date = close_date;
-        this.description = description;
-        this.phase = phase;
-        this.comment_count = comment_count;
-        this.vote_votes_count = vote_votes_count;
-        this.user = user;
-    }
 
     public int getId() {
         return id;
@@ -98,5 +86,13 @@ public class Proposal implements Serializable {
 
     public void setVote_votes_count(int vote_votes_count) {
         this.vote_votes_count = vote_votes_count;
+    }
+
+    public int getReview_votes_count() {
+        return review_votes_count;
+    }
+
+    public void setReview_votes_count(int review_votes_count) {
+        this.review_votes_count = review_votes_count;
     }
 }

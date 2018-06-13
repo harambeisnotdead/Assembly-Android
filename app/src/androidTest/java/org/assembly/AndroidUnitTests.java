@@ -23,9 +23,15 @@ public class AndroidUnitTests {
     @Test
     public void loginUser_isLogged() throws Exception {
         Context appContext = InstrumentationRegistry.getTargetContext();
-        PreferenceManager.getDefaultSharedPreferences(appContext).edit().remove(SharedKeys.TOKEN);
+        PreferenceManager.getDefaultSharedPreferences(appContext)
+                         .edit()
+                         .remove(SharedKeys.TOKEN)
+                         .commit();
         APIClient api = new APIClient(appContext);
         assertTrue(api.login("testing", "testing"));
+        assertNotNull(PreferenceManager
+                      .getDefaultSharedPreferences(appContext)
+                      .getString(SharedKeys.TOKEN, null));
     }
 
     @Test
